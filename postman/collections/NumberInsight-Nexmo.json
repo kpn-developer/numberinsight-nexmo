@@ -1,0 +1,1363 @@
+{
+	"info": {
+		"_postman_id": "64076152-67d8-4aea-8769-c66842f67de6",
+		"name": "NumberInsight-Nexmo",
+		"description": "Nexmo's Number Insight API provides details about the validity, reachability and roaming status of a phone number, as well as giving you details on how to format the number properly in your application. There are three levels of the Number Insight API available:\n   - Basic\n   - Standard\n   - Advanced\n   \n  The advanced API is available asynchronously as well as synchronously.\n\n## [KPN API Store](https://developer.kpn.com/)<br/> [Getting Started](https://developer.kpn.com/getting-started)\n---\n\nContact Support:\n Name: API Support\n Email: api_developer@kpn.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "4406147-64076152-67d8-4aea-8769-c66842f67de6"
+	},
+	"item": [
+		{
+			"name": "{level}",
+			"item": [
+				{
+					"name": "Synchronously get information about a phone number",
+					"id": "6aee47e9-6471-480a-ac94-9a3f87f5d277",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+									"key": "number",
+									"value": "{{number}}"
+								},
+								{
+									"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+									"key": "country",
+									"value": ""
+								},
+								{
+									"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+									"key": "cnam",
+									"value": ""
+								},
+								{
+									"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+									"key": "ip",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/:level",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								":level"
+							],
+							"variable": [
+								{
+									"key": "level",
+									"value": "{{level}}"
+								}
+							]
+						},
+						"description": "**Number Insight Basic**\nYou can use Nexmo's Number Insight Basic API to retrieve local and international representations of a phone number by doing semantic checks on the number you submit. This can help you normalise and consistently print numbers in your user interface and gives you information to help you decide if a phone number accept the phone number entered by your user, or ask them to check and correct it.\n\n  Number Insight Basic API is a free synchronous, easy-to-use RESTful web service. For any phone number you can\n  \n   - Retrieve the international and local format.\n   - Know the country where the number is registered.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/basic \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=447700900000'\n\n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"status\": 0,\n      \"status_message\": \"Success\",\n      \"request_id\": \"fcb1e9a2-db9c-4ea2-84be-4e60da45e187\",\n      \"international_format_number\": \"447700900000\",\n      \"national_format_number\": \"07700 900000\",\n      \"country_code\": \"GB\",\n      \"country_code_iso3\": \"GBR\",\n      \"country_name\": \"United Kingdom\",\n      \"country_prefix\": \"44\"\n  }\n  \n  ```"
+					},
+					"response": [
+						{
+							"id": "ba0803de-a430-4994-a9ce-1e78e7e82ad8",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+											"key": "number",
+											"value": "{{number}}"
+										},
+										{
+											"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+											"key": "cnam",
+											"value": ""
+										},
+										{
+											"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+											"key": "ip",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:level",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":level"
+									],
+									"variable": [
+										{
+											"key": "level",
+											"value": "{{level}}"
+										}
+									]
+								},
+								"description": "**Number Insight Basic**\nYou can use Nexmo's Number Insight Basic API to retrieve local and international representations of a phone number by doing semantic checks on the number you submit. This can help you normalise and consistently print numbers in your user interface and gives you information to help you decide if a phone number accept the phone number entered by your user, or ask them to check and correct it.\n\n  Number Insight Basic API is a free synchronous, easy-to-use RESTful web service. For any phone number you can\n  \n   - Retrieve the international and local format.\n   - Know the country where the number is registered.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/basic \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=447700900000'\n\n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"status\": 0,\n      \"status_message\": \"Success\",\n      \"request_id\": \"fcb1e9a2-db9c-4ea2-84be-4e60da45e187\",\n      \"international_format_number\": \"447700900000\",\n      \"national_format_number\": \"07700 900000\",\n      \"country_code\": \"GB\",\n      \"country_code_iso3\": \"GBR\",\n      \"country_name\": \"United Kingdom\",\n      \"country_prefix\": \"44\"\n  }\n  \n  ```"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"status\": 4,\n  \"status_message\": \"<string>\",\n  \"request_id\": \"<string>\",\n  \"international_format_number\": \"<string>\",\n  \"national_format_number\": \"<string>\",\n  \"country_code\": \"SP\",\n  \"country_code_iso3\": \"YZM\",\n  \"country_name\": \"<string>\",\n  \"country_prefix\": \"<string>\"\n}"
+						},
+						{
+							"id": "cd57c0b1-bc3d-4135-90b5-2c9c2814d3ff",
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+											"key": "number",
+											"value": "{{number}}"
+										},
+										{
+											"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+											"key": "cnam",
+											"value": ""
+										},
+										{
+											"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+											"key": "ip",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:level",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":level"
+									],
+									"variable": [
+										{
+											"key": "level",
+											"value": "{{level}}"
+										}
+									]
+								},
+								"description": "**Number Insight Basic**\nYou can use Nexmo's Number Insight Basic API to retrieve local and international representations of a phone number by doing semantic checks on the number you submit. This can help you normalise and consistently print numbers in your user interface and gives you information to help you decide if a phone number accept the phone number entered by your user, or ask them to check and correct it.\n\n  Number Insight Basic API is a free synchronous, easy-to-use RESTful web service. For any phone number you can\n  \n   - Retrieve the international and local format.\n   - Know the country where the number is registered.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/basic \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=447700900000'\n\n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"status\": 0,\n      \"status_message\": \"Success\",\n      \"request_id\": \"fcb1e9a2-db9c-4ea2-84be-4e60da45e187\",\n      \"international_format_number\": \"447700900000\",\n      \"national_format_number\": \"07700 900000\",\n      \"country_code\": \"GB\",\n      \"country_code_iso3\": \"GBR\",\n      \"country_name\": \"United Kingdom\",\n      \"country_prefix\": \"44\"\n  }\n  \n  ```"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "329109c5-2cee-4033-aefe-4facf37b1bd8",
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+											"key": "number",
+											"value": "{{number}}"
+										},
+										{
+											"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+											"key": "cnam",
+											"value": ""
+										},
+										{
+											"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+											"key": "ip",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:level",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":level"
+									],
+									"variable": [
+										{
+											"key": "level",
+											"value": "{{level}}"
+										}
+									]
+								},
+								"description": "**Number Insight Basic**\nYou can use Nexmo's Number Insight Basic API to retrieve local and international representations of a phone number by doing semantic checks on the number you submit. This can help you normalise and consistently print numbers in your user interface and gives you information to help you decide if a phone number accept the phone number entered by your user, or ask them to check and correct it.\n\n  Number Insight Basic API is a free synchronous, easy-to-use RESTful web service. For any phone number you can\n  \n   - Retrieve the international and local format.\n   - Know the country where the number is registered.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/basic \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=447700900000'\n\n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"status\": 0,\n      \"status_message\": \"Success\",\n      \"request_id\": \"fcb1e9a2-db9c-4ea2-84be-4e60da45e187\",\n      \"international_format_number\": \"447700900000\",\n      \"national_format_number\": \"07700 900000\",\n      \"country_code\": \"GB\",\n      \"country_code_iso3\": \"GBR\",\n      \"country_name\": \"United Kingdom\",\n      \"country_prefix\": \"44\"\n  }\n  \n  ```"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "6062e35b-5860-4520-95d0-04c0b754ef35",
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+											"key": "number",
+											"value": "{{number}}"
+										},
+										{
+											"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+											"key": "cnam",
+											"value": ""
+										},
+										{
+											"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+											"key": "ip",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:level",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":level"
+									],
+									"variable": [
+										{
+											"key": "level",
+											"value": "{{level}}"
+										}
+									]
+								},
+								"description": "**Number Insight Basic**\nYou can use Nexmo's Number Insight Basic API to retrieve local and international representations of a phone number by doing semantic checks on the number you submit. This can help you normalise and consistently print numbers in your user interface and gives you information to help you decide if a phone number accept the phone number entered by your user, or ask them to check and correct it.\n\n  Number Insight Basic API is a free synchronous, easy-to-use RESTful web service. For any phone number you can\n  \n   - Retrieve the international and local format.\n   - Know the country where the number is registered.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/basic \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=447700900000'\n\n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"status\": 0,\n      \"status_message\": \"Success\",\n      \"request_id\": \"fcb1e9a2-db9c-4ea2-84be-4e60da45e187\",\n      \"international_format_number\": \"447700900000\",\n      \"national_format_number\": \"07700 900000\",\n      \"country_code\": \"GB\",\n      \"country_code_iso3\": \"GBR\",\n      \"country_name\": \"United Kingdom\",\n      \"country_prefix\": \"44\"\n  }\n  \n  ```"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "33bdcd32-91ea-469e-b627-3c1928efcb9b",
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+											"key": "number",
+											"value": "{{number}}"
+										},
+										{
+											"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+											"key": "cnam",
+											"value": ""
+										},
+										{
+											"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+											"key": "ip",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:level",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":level"
+									],
+									"variable": [
+										{
+											"key": "level",
+											"value": "{{level}}"
+										}
+									]
+								},
+								"description": "**Number Insight Basic**\nYou can use Nexmo's Number Insight Basic API to retrieve local and international representations of a phone number by doing semantic checks on the number you submit. This can help you normalise and consistently print numbers in your user interface and gives you information to help you decide if a phone number accept the phone number entered by your user, or ask them to check and correct it.\n\n  Number Insight Basic API is a free synchronous, easy-to-use RESTful web service. For any phone number you can\n  \n   - Retrieve the international and local format.\n   - Know the country where the number is registered.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/basic \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=447700900000'\n\n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"status\": 0,\n      \"status_message\": \"Success\",\n      \"request_id\": \"fcb1e9a2-db9c-4ea2-84be-4e60da45e187\",\n      \"international_format_number\": \"447700900000\",\n      \"national_format_number\": \"07700 900000\",\n      \"country_code\": \"GB\",\n      \"country_code_iso3\": \"GBR\",\n      \"country_name\": \"United Kingdom\",\n      \"country_prefix\": \"44\"\n  }\n  \n  ```"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "d6239cba-8979-466a-a1ca-e4fb7cc25b4c",
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+											"key": "number",
+											"value": "{{number}}"
+										},
+										{
+											"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+											"key": "cnam",
+											"value": ""
+										},
+										{
+											"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+											"key": "ip",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:level",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":level"
+									],
+									"variable": [
+										{
+											"key": "level",
+											"value": "{{level}}"
+										}
+									]
+								},
+								"description": "**Number Insight Basic**\nYou can use Nexmo's Number Insight Basic API to retrieve local and international representations of a phone number by doing semantic checks on the number you submit. This can help you normalise and consistently print numbers in your user interface and gives you information to help you decide if a phone number accept the phone number entered by your user, or ask them to check and correct it.\n\n  Number Insight Basic API is a free synchronous, easy-to-use RESTful web service. For any phone number you can\n  \n   - Retrieve the international and local format.\n   - Know the country where the number is registered.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/basic \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=447700900000'\n\n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"status\": 0,\n      \"status_message\": \"Success\",\n      \"request_id\": \"fcb1e9a2-db9c-4ea2-84be-4e60da45e187\",\n      \"international_format_number\": \"447700900000\",\n      \"national_format_number\": \"07700 900000\",\n      \"country_code\": \"GB\",\n      \"country_code_iso3\": \"GBR\",\n      \"country_name\": \"United Kingdom\",\n      \"country_prefix\": \"44\"\n  }\n  \n  ```"
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "b37284ef-2dd4-4974-9df9-dbbb4a7be22e",
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+											"key": "number",
+											"value": "{{number}}"
+										},
+										{
+											"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+											"key": "cnam",
+											"value": ""
+										},
+										{
+											"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+											"key": "ip",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:level",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":level"
+									],
+									"variable": [
+										{
+											"key": "level",
+											"value": "{{level}}"
+										}
+									]
+								},
+								"description": "**Number Insight Basic**\nYou can use Nexmo's Number Insight Basic API to retrieve local and international representations of a phone number by doing semantic checks on the number you submit. This can help you normalise and consistently print numbers in your user interface and gives you information to help you decide if a phone number accept the phone number entered by your user, or ask them to check and correct it.\n\n  Number Insight Basic API is a free synchronous, easy-to-use RESTful web service. For any phone number you can\n  \n   - Retrieve the international and local format.\n   - Know the country where the number is registered.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/basic \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=447700900000'\n\n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"status\": 0,\n      \"status_message\": \"Success\",\n      \"request_id\": \"fcb1e9a2-db9c-4ea2-84be-4e60da45e187\",\n      \"international_format_number\": \"447700900000\",\n      \"national_format_number\": \"07700 900000\",\n      \"country_code\": \"GB\",\n      \"country_code_iso3\": \"GBR\",\n      \"country_name\": \"United Kingdom\",\n      \"country_prefix\": \"44\"\n  }\n  \n  ```"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "7bec7dc3-f9f2-415d-a149-949282d0be5f",
+							"name": "Service Unavailable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+											"key": "number",
+											"value": "{{number}}"
+										},
+										{
+											"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+											"key": "cnam",
+											"value": ""
+										},
+										{
+											"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+											"key": "ip",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/:level",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":level"
+									],
+									"variable": [
+										{
+											"key": "level",
+											"value": "{{level}}"
+										}
+									]
+								},
+								"description": "**Number Insight Basic**\nYou can use Nexmo's Number Insight Basic API to retrieve local and international representations of a phone number by doing semantic checks on the number you submit. This can help you normalise and consistently print numbers in your user interface and gives you information to help you decide if a phone number accept the phone number entered by your user, or ask them to check and correct it.\n\n  Number Insight Basic API is a free synchronous, easy-to-use RESTful web service. For any phone number you can\n  \n   - Retrieve the international and local format.\n   - Know the country where the number is registered.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/basic \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=447700900000'\n\n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"status\": 0,\n      \"status_message\": \"Success\",\n      \"request_id\": \"fcb1e9a2-db9c-4ea2-84be-4e60da45e187\",\n      \"international_format_number\": \"447700900000\",\n      \"national_format_number\": \"07700 900000\",\n      \"country_code\": \"GB\",\n      \"country_code_iso3\": \"GBR\",\n      \"country_name\": \"United Kingdom\",\n      \"country_prefix\": \"44\"\n  }\n  \n  ```"
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "73afec17-0950-4036-bd38-3571f8485b17"
+		},
+		{
+			"name": "advanced",
+			"item": [
+				{
+					"name": "async",
+					"item": [
+						{
+							"name": "Asynchronously get information about a phone number",
+							"id": "16aa04b5-f56f-48db-968a-2c32aedf9edc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+											"key": "number",
+											"value": "{{number}}"
+										},
+										{
+											"description": "(Required) The callback URL\n  example: https://example.com/callback",
+											"key": "callback",
+											"value": "{{callback}}"
+										},
+										{
+											"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+											"key": "cnam",
+											"value": ""
+										},
+										{
+											"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+											"key": "ip",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/advanced/async",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"advanced",
+										"async"
+									]
+								},
+								"description": "**Number Insight Advanced Async**\nYou can use Nexmo's Number Insight Async API to retrieve a user's landline or mobile number, including checking to see that it is registered to an operator. This can help you verify that a phone number is real and give you information on how to format the number.\n\nNumber Insight Advanced Async API is an asynchronous web service that returns data to a webhook. For any phone number you can\n\n- Retrieve the international and local format.\n- Know the country where the number is registered.\n- Line type detection (mobile/landline/virtual number/premium/toll-free)\n- Detect mobile country code (MCC) and mobile network code (MNC)\n- Detect if number is ported\n- Identify caller name (USA only)\n- Identify network when roaming\n- Confirm user's IP address is in same location as their mobile phone\n\nUsers are advised that the Advanced API does not give any information about landlines that is not already given by the Standard API. For number insights about landlines, you should use the Standard API.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/advanced/async \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=31620028461'\n    -d 'callback=https://example.com/callback'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"request_id\": \"c510011c-d782-4f49-bfa9-38a2254884e4\",\n      \"number\": \"447700900000\",\n      \"remaining_balance\": \"10.000000\",\n      \"request_price\": \"0.03000000\",\n      \"status\": 0\n  }\n  ```        "
+							},
+							"response": [
+								{
+									"id": "b4e4ce5c-f3d1-461b-a8e8-0ab48a777b9a",
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "application"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+													"key": "number",
+													"value": "{{number}}"
+												},
+												{
+													"description": "(Required) The callback URL\n  example: https://example.com/callback",
+													"key": "callback",
+													"value": "{{callback}}"
+												},
+												{
+													"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+													"key": "country",
+													"value": ""
+												},
+												{
+													"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+													"key": "cnam",
+													"value": ""
+												},
+												{
+													"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+													"key": "ip",
+													"value": ""
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/advanced/async",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"advanced",
+												"async"
+											]
+										},
+										"description": "**Number Insight Advanced Async**\nYou can use Nexmo's Number Insight Async API to retrieve a user's landline or mobile number, including checking to see that it is registered to an operator. This can help you verify that a phone number is real and give you information on how to format the number.\n\nNumber Insight Advanced Async API is an asynchronous web service that returns data to a webhook. For any phone number you can\n\n- Retrieve the international and local format.\n- Know the country where the number is registered.\n- Line type detection (mobile/landline/virtual number/premium/toll-free)\n- Detect mobile country code (MCC) and mobile network code (MNC)\n- Detect if number is ported\n- Identify caller name (USA only)\n- Identify network when roaming\n- Confirm user's IP address is in same location as their mobile phone\n\nUsers are advised that the Advanced API does not give any information about landlines that is not already given by the Standard API. For number insights about landlines, you should use the Standard API.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/advanced/async \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=31620028461'\n    -d 'callback=https://example.com/callback'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"request_id\": \"c510011c-d782-4f49-bfa9-38a2254884e4\",\n      \"number\": \"447700900000\",\n      \"remaining_balance\": \"10.000000\",\n      \"request_price\": \"0.03000000\",\n      \"status\": 0\n  }\n  ```        "
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"request_id\": \"<string>\",\n  \"number\": \"<string>\",\n  \"remaining_balance\": \"<string>\",\n  \"request_price\": \"<number>\",\n  \"status\": 1\n}"
+								},
+								{
+									"id": "c584b9bb-4262-4656-9fd5-96ec5417e77b",
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "application"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+													"key": "number",
+													"value": "{{number}}"
+												},
+												{
+													"description": "(Required) The callback URL\n  example: https://example.com/callback",
+													"key": "callback",
+													"value": "{{callback}}"
+												},
+												{
+													"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+													"key": "country",
+													"value": ""
+												},
+												{
+													"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+													"key": "cnam",
+													"value": ""
+												},
+												{
+													"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+													"key": "ip",
+													"value": ""
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/advanced/async",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"advanced",
+												"async"
+											]
+										},
+										"description": "**Number Insight Advanced Async**\nYou can use Nexmo's Number Insight Async API to retrieve a user's landline or mobile number, including checking to see that it is registered to an operator. This can help you verify that a phone number is real and give you information on how to format the number.\n\nNumber Insight Advanced Async API is an asynchronous web service that returns data to a webhook. For any phone number you can\n\n- Retrieve the international and local format.\n- Know the country where the number is registered.\n- Line type detection (mobile/landline/virtual number/premium/toll-free)\n- Detect mobile country code (MCC) and mobile network code (MNC)\n- Detect if number is ported\n- Identify caller name (USA only)\n- Identify network when roaming\n- Confirm user's IP address is in same location as their mobile phone\n\nUsers are advised that the Advanced API does not give any information about landlines that is not already given by the Standard API. For number insights about landlines, you should use the Standard API.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/advanced/async \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=31620028461'\n    -d 'callback=https://example.com/callback'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"request_id\": \"c510011c-d782-4f49-bfa9-38a2254884e4\",\n      \"number\": \"447700900000\",\n      \"remaining_balance\": \"10.000000\",\n      \"request_price\": \"0.03000000\",\n      \"status\": 0\n  }\n  ```        "
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+								},
+								{
+									"id": "2d3a04b0-09e1-4e47-91c0-a5b330326ea0",
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "application"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+													"key": "number",
+													"value": "{{number}}"
+												},
+												{
+													"description": "(Required) The callback URL\n  example: https://example.com/callback",
+													"key": "callback",
+													"value": "{{callback}}"
+												},
+												{
+													"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+													"key": "country",
+													"value": ""
+												},
+												{
+													"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+													"key": "cnam",
+													"value": ""
+												},
+												{
+													"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+													"key": "ip",
+													"value": ""
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/advanced/async",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"advanced",
+												"async"
+											]
+										},
+										"description": "**Number Insight Advanced Async**\nYou can use Nexmo's Number Insight Async API to retrieve a user's landline or mobile number, including checking to see that it is registered to an operator. This can help you verify that a phone number is real and give you information on how to format the number.\n\nNumber Insight Advanced Async API is an asynchronous web service that returns data to a webhook. For any phone number you can\n\n- Retrieve the international and local format.\n- Know the country where the number is registered.\n- Line type detection (mobile/landline/virtual number/premium/toll-free)\n- Detect mobile country code (MCC) and mobile network code (MNC)\n- Detect if number is ported\n- Identify caller name (USA only)\n- Identify network when roaming\n- Confirm user's IP address is in same location as their mobile phone\n\nUsers are advised that the Advanced API does not give any information about landlines that is not already given by the Standard API. For number insights about landlines, you should use the Standard API.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/advanced/async \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=31620028461'\n    -d 'callback=https://example.com/callback'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"request_id\": \"c510011c-d782-4f49-bfa9-38a2254884e4\",\n      \"number\": \"447700900000\",\n      \"remaining_balance\": \"10.000000\",\n      \"request_price\": \"0.03000000\",\n      \"status\": 0\n  }\n  ```        "
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+								},
+								{
+									"id": "dc89d41e-6ec2-405b-afd0-57bd0ee3603a",
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "application"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+													"key": "number",
+													"value": "{{number}}"
+												},
+												{
+													"description": "(Required) The callback URL\n  example: https://example.com/callback",
+													"key": "callback",
+													"value": "{{callback}}"
+												},
+												{
+													"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+													"key": "country",
+													"value": ""
+												},
+												{
+													"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+													"key": "cnam",
+													"value": ""
+												},
+												{
+													"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+													"key": "ip",
+													"value": ""
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/advanced/async",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"advanced",
+												"async"
+											]
+										},
+										"description": "**Number Insight Advanced Async**\nYou can use Nexmo's Number Insight Async API to retrieve a user's landline or mobile number, including checking to see that it is registered to an operator. This can help you verify that a phone number is real and give you information on how to format the number.\n\nNumber Insight Advanced Async API is an asynchronous web service that returns data to a webhook. For any phone number you can\n\n- Retrieve the international and local format.\n- Know the country where the number is registered.\n- Line type detection (mobile/landline/virtual number/premium/toll-free)\n- Detect mobile country code (MCC) and mobile network code (MNC)\n- Detect if number is ported\n- Identify caller name (USA only)\n- Identify network when roaming\n- Confirm user's IP address is in same location as their mobile phone\n\nUsers are advised that the Advanced API does not give any information about landlines that is not already given by the Standard API. For number insights about landlines, you should use the Standard API.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/advanced/async \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=31620028461'\n    -d 'callback=https://example.com/callback'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"request_id\": \"c510011c-d782-4f49-bfa9-38a2254884e4\",\n      \"number\": \"447700900000\",\n      \"remaining_balance\": \"10.000000\",\n      \"request_price\": \"0.03000000\",\n      \"status\": 0\n  }\n  ```        "
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+								},
+								{
+									"id": "d2455c05-2bc8-4483-8d66-450c3938fcaf",
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "application"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+													"key": "number",
+													"value": "{{number}}"
+												},
+												{
+													"description": "(Required) The callback URL\n  example: https://example.com/callback",
+													"key": "callback",
+													"value": "{{callback}}"
+												},
+												{
+													"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+													"key": "country",
+													"value": ""
+												},
+												{
+													"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+													"key": "cnam",
+													"value": ""
+												},
+												{
+													"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+													"key": "ip",
+													"value": ""
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/advanced/async",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"advanced",
+												"async"
+											]
+										},
+										"description": "**Number Insight Advanced Async**\nYou can use Nexmo's Number Insight Async API to retrieve a user's landline or mobile number, including checking to see that it is registered to an operator. This can help you verify that a phone number is real and give you information on how to format the number.\n\nNumber Insight Advanced Async API is an asynchronous web service that returns data to a webhook. For any phone number you can\n\n- Retrieve the international and local format.\n- Know the country where the number is registered.\n- Line type detection (mobile/landline/virtual number/premium/toll-free)\n- Detect mobile country code (MCC) and mobile network code (MNC)\n- Detect if number is ported\n- Identify caller name (USA only)\n- Identify network when roaming\n- Confirm user's IP address is in same location as their mobile phone\n\nUsers are advised that the Advanced API does not give any information about landlines that is not already given by the Standard API. For number insights about landlines, you should use the Standard API.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/advanced/async \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=31620028461'\n    -d 'callback=https://example.com/callback'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"request_id\": \"c510011c-d782-4f49-bfa9-38a2254884e4\",\n      \"number\": \"447700900000\",\n      \"remaining_balance\": \"10.000000\",\n      \"request_price\": \"0.03000000\",\n      \"status\": 0\n  }\n  ```        "
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+								},
+								{
+									"id": "86f00f07-8d17-4341-b144-a415b2e09b5e",
+									"name": "Too Many Requests",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "application"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+													"key": "number",
+													"value": "{{number}}"
+												},
+												{
+													"description": "(Required) The callback URL\n  example: https://example.com/callback",
+													"key": "callback",
+													"value": "{{callback}}"
+												},
+												{
+													"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+													"key": "country",
+													"value": ""
+												},
+												{
+													"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+													"key": "cnam",
+													"value": ""
+												},
+												{
+													"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+													"key": "ip",
+													"value": ""
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/advanced/async",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"advanced",
+												"async"
+											]
+										},
+										"description": "**Number Insight Advanced Async**\nYou can use Nexmo's Number Insight Async API to retrieve a user's landline or mobile number, including checking to see that it is registered to an operator. This can help you verify that a phone number is real and give you information on how to format the number.\n\nNumber Insight Advanced Async API is an asynchronous web service that returns data to a webhook. For any phone number you can\n\n- Retrieve the international and local format.\n- Know the country where the number is registered.\n- Line type detection (mobile/landline/virtual number/premium/toll-free)\n- Detect mobile country code (MCC) and mobile network code (MNC)\n- Detect if number is ported\n- Identify caller name (USA only)\n- Identify network when roaming\n- Confirm user's IP address is in same location as their mobile phone\n\nUsers are advised that the Advanced API does not give any information about landlines that is not already given by the Standard API. For number insights about landlines, you should use the Standard API.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/advanced/async \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=31620028461'\n    -d 'callback=https://example.com/callback'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"request_id\": \"c510011c-d782-4f49-bfa9-38a2254884e4\",\n      \"number\": \"447700900000\",\n      \"remaining_balance\": \"10.000000\",\n      \"request_price\": \"0.03000000\",\n      \"status\": 0\n  }\n  ```        "
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+								},
+								{
+									"id": "14489022-e033-4662-bf30-5beed01906a4",
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "application"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+													"key": "number",
+													"value": "{{number}}"
+												},
+												{
+													"description": "(Required) The callback URL\n  example: https://example.com/callback",
+													"key": "callback",
+													"value": "{{callback}}"
+												},
+												{
+													"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+													"key": "country",
+													"value": ""
+												},
+												{
+													"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+													"key": "cnam",
+													"value": ""
+												},
+												{
+													"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+													"key": "ip",
+													"value": ""
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/advanced/async",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"advanced",
+												"async"
+											]
+										},
+										"description": "**Number Insight Advanced Async**\nYou can use Nexmo's Number Insight Async API to retrieve a user's landline or mobile number, including checking to see that it is registered to an operator. This can help you verify that a phone number is real and give you information on how to format the number.\n\nNumber Insight Advanced Async API is an asynchronous web service that returns data to a webhook. For any phone number you can\n\n- Retrieve the international and local format.\n- Know the country where the number is registered.\n- Line type detection (mobile/landline/virtual number/premium/toll-free)\n- Detect mobile country code (MCC) and mobile network code (MNC)\n- Detect if number is ported\n- Identify caller name (USA only)\n- Identify network when roaming\n- Confirm user's IP address is in same location as their mobile phone\n\nUsers are advised that the Advanced API does not give any information about landlines that is not already given by the Standard API. For number insights about landlines, you should use the Standard API.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/advanced/async \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=31620028461'\n    -d 'callback=https://example.com/callback'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"request_id\": \"c510011c-d782-4f49-bfa9-38a2254884e4\",\n      \"number\": \"447700900000\",\n      \"remaining_balance\": \"10.000000\",\n      \"request_price\": \"0.03000000\",\n      \"status\": 0\n  }\n  ```        "
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+								},
+								{
+									"id": "0ec5d532-6dd2-4a9a-bde8-7849f3bbe154",
+									"name": "Service Unavailable",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Accept",
+												"value": "application"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"description": "(Required) The single phone number that you need insight about in national or international format.\n    example: 447700900000",
+													"key": "number",
+													"value": "{{number}}"
+												},
+												{
+													"description": "(Required) The callback URL\n  example: https://example.com/callback",
+													"key": "callback",
+													"value": "{{callback}}"
+												},
+												{
+													"description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number.\n  example: GB",
+													"key": "country",
+													"value": ""
+												},
+												{
+													"description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge.\n  example: true",
+													"key": "cnam",
+													"value": ""
+												},
+												{
+													"description": "The IP address of the user. If supplied, we will compare this to the country the user's phone is located in and return an error if it does not match.\n  example: 123.0.0.255",
+													"key": "ip",
+													"value": ""
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/advanced/async",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"advanced",
+												"async"
+											]
+										},
+										"description": "**Number Insight Advanced Async**\nYou can use Nexmo's Number Insight Async API to retrieve a user's landline or mobile number, including checking to see that it is registered to an operator. This can help you verify that a phone number is real and give you information on how to format the number.\n\nNumber Insight Advanced Async API is an asynchronous web service that returns data to a webhook. For any phone number you can\n\n- Retrieve the international and local format.\n- Know the country where the number is registered.\n- Line type detection (mobile/landline/virtual number/premium/toll-free)\n- Detect mobile country code (MCC) and mobile network code (MNC)\n- Detect if number is ported\n- Identify caller name (USA only)\n- Identify network when roaming\n- Confirm user's IP address is in same location as their mobile phone\n\nUsers are advised that the Advanced API does not give any information about landlines that is not already given by the Standard API. For number insights about landlines, you should use the Standard API.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    https://api-prd.kpn.com/communication/nexmo/number-insight/advanced/async \\\n    -H 'authorization: Bearer ZvV84AtjcXoHU48hA6b5AZljegdy' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'number=31620028461'\n    -d 'callback=https://example.com/callback'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n      \"request_id\": \"c510011c-d782-4f49-bfa9-38a2254884e4\",\n      \"number\": \"447700900000\",\n      \"remaining_balance\": \"10.000000\",\n      \"request_price\": \"0.03000000\",\n      \"status\": 0\n  }\n  ```        "
+									},
+									"status": "Service Unavailable",
+									"code": 503,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+								}
+							]
+						}
+					],
+					"id": "a4827f69-1f31-4427-a3f1-393137898998"
+				}
+			],
+			"id": "a16fe881-46f4-40b3-83c0-ba7ad9c91e5f"
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{client_secret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{client_id}}",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "access_token",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3f37a501-1416-4b61-8728-f11053ed0da0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "553e89c2-6ece-4bc2-872a-d9c94c30085c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8828a484-3471-4564-90fa-b54c2d0904a6",
+			"key": "baseUrl",
+			"value": "https://api-prd.kpn.com/communication/nexmo/number-insight"
+		},
+		{
+			"id": "7a125107-4c93-4b93-a57f-3796509551bd",
+			"key": "client_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "bfe10bb5-e250-4342-96d4-62af4217feda",
+			"key": "client_secret",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "2c91ddc8-83ce-484c-abf2-1ad8ff4275c3",
+			"key": "level",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "c33c975c-b0f6-40f3-b3ed-7297b3c24087",
+			"key": "number",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "028b6821-343b-4491-a568-8aefcb85e620",
+			"key": "callback",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
