@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "64076152-67d8-4aea-8769-c66842f67de6",
 		"name": "NumberInsight-Nexmo",
-		"description": "Nexmo's Number Insight API provides details about the validity, reachability and roaming status of a phone number, as well as giving you details on how to format the number properly in your application. There are three levels of the Number Insight API available:\n   - Basic\n   - Standard\n   - Advanced\n   \n  The advanced API is available asynchronously as well as synchronously.\n\n## [KPN API Store](https://developer.kpn.com/)<br/> [Getting Started](https://developer.kpn.com/getting-started)\n---\n\nContact Support:\n Name: API Support\n Email: api_developer@kpn.com",
+		"description": "Nexmo's Number Insight API provides details about the validity, reachability and roaming status of a phone number, as well as giving you details on how to format the number properly in your application. There are three levels of the Number Insight API available:\n\n- Basic\n- Standard\n- Advanced\n    The advanced API is available asynchronously as well as synchronously.\n    \n\n## [KPN Developer](https://developer.kpn.com/)  \n[Getting Started](https://developer.kpn.com/getting-started)\n\n---\n\nContact Support:  \nName: API Support  \nEmail: [api_developer@kpn.com](mailto:api_developer@kpn.com)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_uid": "4406147-64076152-67d8-4aea-8769-c66842f67de6"
 	},
